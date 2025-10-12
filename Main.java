@@ -9,7 +9,7 @@ public class Main {
             System.out.println("\nМЕНЮ ВЫБОРА ЗАДАЧ");
             System.out.println("1 - Человек");
             System.out.println("2 - Имена");
-            System.out.println("3 - Сотрудники и отделы + измененная ");
+            System.out.println("3 - Сотрудники и отделы");
             System.out.println("4 - Имена (измененная)");
             System.out.println("5 - Пистолет");
             System.out.println("0 - Выход");
@@ -33,7 +33,6 @@ public class Main {
                         System.out.println("1." + cleopatra);
                         System.out.println("2." + pushkin);
                         System.out.println("3." + vladimir);
-
                         break;
 
                     case 2:
@@ -46,7 +45,6 @@ public class Main {
                         System.out.println("1. " + name1);
                         System.out.println("2. " + name2);
                         System.out.println("3. " + name3);
-
                         break;
 
                     case 4:
@@ -61,9 +59,7 @@ public class Main {
                         System.out.println("2. " + name4_2);
                         System.out.println("3. " + name4_3);
                         System.out.println("4. " + name4_4);
-
                         break;
-
 
                     case 3:
                         System.out.println("\n------------------БЛОК СОТРУДНИКИ------------------");
@@ -80,7 +76,6 @@ public class Main {
                         for (Assistant emp : Petrov.getColleagues()) {
                             System.out.println("- " + emp.getName());
                         }
-
                         break;
 
                     case 5:
@@ -89,7 +84,6 @@ public class Main {
                         pistolet.shootMultipleTimes(5);
 
                         System.out.println("\nСостояние пистолета: " + pistolet);
-
                         break;
 
                     default:
@@ -100,9 +94,9 @@ public class Main {
                             scanner.nextLine();
                             scanner.nextLine();
                         }
-
                 }
-
+            }catch (IllegalArgumentException e) {
+                    System.out.println("Ошибка: " + e.getMessage());
             } catch (Exception e) {
                 System.out.println("Ошибка: Вы ввели некорректные данные!");
                 scanner.nextLine();
@@ -111,4 +105,3 @@ public class Main {
         scanner.close();
     }
 }
-
