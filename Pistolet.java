@@ -1,14 +1,12 @@
 public class Pistolet {
-    private int bulletCount; // количество патронов
+    private int bulletCount;
 
     public int getBulletCount() {
         return bulletCount;
     }
 
     public void setBulletCount(int bulletCount) {
-        if (bulletCount < 0) {
-            throw new IllegalArgumentException("Количество патронов не может быть отрицательным.");
-        }
+        Validator.validateNonNegative(bulletCount, "Количество патронов");
         this.bulletCount = bulletCount;
     }
 
@@ -20,7 +18,6 @@ public class Pistolet {
         setBulletCount(bulletCount);
     }
 
-    //метод "стрелять"
     public void shoot() {
         if (bulletCount > 0) {
             System.out.println("Бах!");
@@ -35,12 +32,8 @@ public class Pistolet {
         return "Пистолет с " + bulletCount + " патронами";
     }
 
-    //метод для стрельбы с указанным количеством выстрелов
     public void shootMultipleTimes(int shots) {
-        if (shots < 0) {
-            throw new IllegalArgumentException("Количество выстрелов не может быть отрицательным.");
-        }
-
+        Validator.validateNonNegative(shots, "Количество выстрелов");
         System.out.println("Стрельба из пистолета:");
         for (int i = 0; i < shots; i++) {
             System.out.print("Выстрел " + (i + 1) + ": ");
