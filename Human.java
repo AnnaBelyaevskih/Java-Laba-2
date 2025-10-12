@@ -11,16 +11,12 @@ public class Human {
     }
 
     public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            System.out.println("Имя не может быть пустым.");
-        }
-        this.name = name.trim();
+        Validator.validateString(name, "Имя");
+        this.name = Validator.cleanStr(name);
     }
 
     public void setHeight(int height) {
-        if (height <= 0) {
-            System.out.println("Рост должен быть положительным числом.");
-        }
+        Validator.validateNonNegative(height, "Рост");
         this.height = height;
     }
 
@@ -30,16 +26,12 @@ public class Human {
     }
 
     public Human(String name, int height) {
-        this.name = name;
+        setName(name);
         setHeight(height);
     }
 
     @Override
     public String toString() {
-        if (height > 0 && name != null) {
-            return "Человек с именем" + " " + this.name + " и ростом " + this.height;
-        } else {
-            return "Неверный ввод";
-        }
+        return "Человек с именем " + this.name + " и ростом " + this.height;
     }
 }
