@@ -6,16 +6,14 @@ public class Assistant {
     private String department;
     private String managerName;
     private boolean isManager;
-    private static List<Assistant> allEmployees = new ArrayList<>(); //список всех сотрудников
+    private static List<Assistant> allEmployees = new ArrayList<>();
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Имя не может быть пустым.");
-        }
+        Validator.validateString(name, "Имя");
         this.name = name;
     }
 
@@ -24,9 +22,7 @@ public class Assistant {
     }
 
     public void setDepartment(String department) {
-        if (department == null || department.trim().isEmpty()) {
-            throw new IllegalArgumentException("Название отдела не может быть пустым.");
-        }
+        Validator.validateString(department, "Название отдела");
         this.department = department;
     }
 
@@ -35,9 +31,7 @@ public class Assistant {
     }
 
     public void setManagerName(String managerName) {
-        if (managerName == null || managerName.trim().isEmpty()) {
-            throw new IllegalArgumentException("Имя начальника не может быть пустым.");
-        }
+        Validator.validateString(managerName, "Имя начальника");
         this.managerName = managerName;
     }
 
@@ -69,14 +63,9 @@ public class Assistant {
         }
     }
 
-    //метод для получения списка всех сотрудников отдела
     public List<Assistant> getColleagues() {
-        //создаём новый пустой список
         List<Assistant> colleagues = new ArrayList<>();
-
-        //проходим по всем сотрудникам
         for (Assistant emp : allEmployees) {
-            //проверяем принадлежит ли текущий сотрудник к тому же отделу, что и текущий объект
             if (emp.getDepartment().equals(this.department)) {
                 colleagues.add(emp);
             }
@@ -84,5 +73,3 @@ public class Assistant {
         return colleagues;
     }
 }
-
-
